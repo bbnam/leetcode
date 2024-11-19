@@ -7,7 +7,7 @@ public class LS424 {
         LS424 ls424 = new LS424();
         System.out.println(ls424.characterReplacement(s, k));
     }
-
+    // sliding window
     public int characterReplacement(String s, int k) {
         int maxCount = 0;
         int max = 0;

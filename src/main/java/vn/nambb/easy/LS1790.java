@@ -1,8 +1,5 @@
 package vn.nambb.easy;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class LS1790 {
     public static void main(String[] args) {
         String s1 = "npv";
@@ -17,16 +14,30 @@ public class LS1790 {
 
         if (c1.length != c2.length) return false;
 
-        List<Integer> list = new ArrayList<>();
+        int first = -1;
+        int second = -1;
         for (int i = 0; i < c1.length; i++) {
             if (c1[i] != c2[i]) {
-                list.add(i);
+                if (first == -1) {
+                    first = i;
+                } else if (second == -1) {
+                    second = i;
+                } else {
+                    return false;
+                }
             }
         }
 
-        if (list.size() == 2 && (c1[list.get(0)] == c2[list.get(1)]) && c1[list.get(1)] == c2[list.get(0)]) {
+        if (first == -1 && second == -1) {
             return true;
-        } else
-            return list.isEmpty();
+        }
+
+        if (second == -1) {
+            return false;
+        }
+
+        return s1.charAt(first) == s2.charAt(second)
+                && s1.charAt(second) == s2.charAt(first);
+
     }
 }
